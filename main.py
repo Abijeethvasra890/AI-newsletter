@@ -35,8 +35,7 @@ def run_newsletter_pipeline():
         email_service = EmailService()
 
         email_service.send_email(
-            to_email="vasraabijeeth@gmail.com",
-            subject="🚀 The Backprop Bulletin — This Week in Indian AI",
+            subject="🚀 India’s AI Pulse — What Just Dropped",
             markdown_content=state.final_newsletter
         )
 
