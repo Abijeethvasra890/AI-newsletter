@@ -95,12 +95,6 @@ class EmailService:
         html_body = self._markdown_to_html(markdown_content)
         full_html = self._wrap_template(html_body)
 
-        message = MIMEMultipart("alternative")
-        message["From"] = self.sender_email
-        message["Subject"] = subject
-
-        message.attach(MIMEText(full_html, "html"))
-
         with smtplib.SMTP(self.smtp_server, self.smtp_port) as server:
             server.starttls()
             server.login(self.sender_email, self.sender_password)
@@ -111,7 +105,7 @@ class EmailService:
                 message["To"] = recipient
                 message["Subject"] = subject
 
-                message.attach(MIMEText(html_body, "html"))
+                message.attach(MIMEText(full_html, "html"))
 
                 server.sendmail(
                     self.sender_email,
