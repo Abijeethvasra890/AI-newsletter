@@ -6,6 +6,8 @@ from email.mime.text import MIMEText
 import markdown
 from dotenv import load_dotenv
 
+from services.subscriber_repository import SubscriberRepository
+
 
 class EmailService:
 
@@ -21,12 +23,17 @@ class EmailService:
         self.sender_password = os.getenv("SENDER_PASSWORD")
         recipients = os.getenv("NEWSLETTER_RECIPIENTS")
 
+        repo = SubscriberRepository()
+        subscribers = repo.get_active_subscribers()
+
+        self.recipients = [s["email"] for s in subscribers]
+
         if not self.sender_email or not self.sender_password:
             raise RuntimeError(
                 "Email credentials not configured. "
                 "Ensure SENDER_EMAIL and SENDER_PASSWORD are set in .env"
             )
-        self.recipients = [email.strip() for email in recipients.split(",")]
+        #self.recipients = [email.strip() for email in recipients.split(",")]
 
     def _markdown_to_html(self, markdown_text: str) -> str:
         return markdown.markdown(markdown_text)
