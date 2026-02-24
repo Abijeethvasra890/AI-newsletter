@@ -2,7 +2,7 @@ name: Daily AI Newsletter
 
 on:
   schedule:
-    - cron: "30 1 * * *"  # 7:00 AM IST daily
+    - cron: "30 0 * * *"  # 6:00 AM IST daily 
   workflow_dispatch:       # allows manual trigger from GitHub UI
 
 jobs:
@@ -29,5 +29,8 @@ jobs:
           SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          NEWSLETTER_RECIPIENTS: ${{ secrets.NEWSLETTER_RECIPIENTS }}
+          SUPABASE_URL:  ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
         run: |
           python main.py

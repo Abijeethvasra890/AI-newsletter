@@ -3,7 +3,7 @@ import time
 from loguru import logger
 from tenacity import retry, stop_after_attempt, wait_exponential
 from groq import Groq
-import google.generativeai as genai
+#import google.generativeai as genai
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -20,10 +20,10 @@ class LLMRouter:
             self.groq_client = Groq(api_key=os.getenv("GROQ_API_KEY"))
             logger.info("Groq initialized")
 
-        if os.getenv("GEMINI_API_KEY"):
-            genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
-            self.gemini_model = genai.GenerativeModel("gemini-2.0-flash-lite")
-            logger.info("Gemini initialized")
+        #if os.getenv("GEMINI_API_KEY"):
+         #   genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+          #  self.gemini_model = genai.GenerativeModel("gemini-2.0-flash-lite")
+           # logger.info("Gemini initialized")
 
         if not self.groq_client and not self.gemini_model:
             raise RuntimeError("No LLM provider configured.")
