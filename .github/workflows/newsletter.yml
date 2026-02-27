@@ -2,8 +2,13 @@ name: Daily AI Newsletter
 
 on:
   schedule:
+<<<<<<< HEAD
     - cron: "0 0 * * *"  # 12:00 AM UTC = 5:30 AM IST (buffer for ~90min GH delay)
   workflow_dispatch:
+=======
+    - cron: "30 0 * * *"  # 6:00 AM IST daily 
+  workflow_dispatch:       # allows manual trigger from GitHub UI
+>>>>>>> 20066486151d920488964d368d3bea27f74b1fe7
 
 jobs:
   send-newsletter:
