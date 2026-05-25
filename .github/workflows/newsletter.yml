@@ -2,7 +2,7 @@ name: Daily AI Newsletter
 
 on:
   schedule:
-    - cron: "0 0 * * *"  # 12:00 AM UTC = 5:30 AM IST (buffer for ~90min GH delay)
+    - cron: "0 0 * * *"  # 12:00 AM UTC = 5:30 AM IST (buffer for ~90min GHdelay)
   workflow_dispatch:
 
 jobs:
