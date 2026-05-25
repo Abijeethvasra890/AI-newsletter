@@ -22,7 +22,7 @@ class CollectorAgent:
         return collect_news()
 
     def run(self, state: NewsletterState) -> NewsletterState:
-        logger.info("🚀 Collector Agent Started")
+        logger.info("🚀 Collector Agent Started.")
 
         try:
             articles = self._safe_collect()
