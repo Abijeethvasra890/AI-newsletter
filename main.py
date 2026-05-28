@@ -35,7 +35,7 @@ def run_newsletter_pipeline():
         email_service = EmailService()
 
         email_service.send_email(
-            subject="🚀 India’s AI Pulse — What Just Dropped",
+            subject="🚀 The Vasra's AI Digest",
             markdown_content=state.final_newsletter
         )
 

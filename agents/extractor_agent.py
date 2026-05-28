@@ -26,15 +26,15 @@ CONTENT:
 }
 """
             for i, a in enumerate(state.ranked_articles)
-        ])
+])
 
         return f"""
-You are an AI newsletter content analyst.
+You are an AI newsletter content analyst writing for a global audience of builders, founders, and researchers.
 
 For each article, generate:
 
-- A concise 3–4 line summary
-- Why it matters for Indian AI developers/startups
+- A concise 3–4 line summary (clear, no jargon unless necessary)
+- Why it matters for AI practitioners and builders worldwide
 - 3 key bullet points
 
 Return STRICT JSON.

@@ -19,16 +19,22 @@ class RankerAgent:
         )
 
         return f"""
-You are an AI news ranking assistant.
+You are an AI news ranking assistant for a global audience of builders, founders, and researchers.
 
 Score each article from 1 to 10.
 
 Prioritize:
-- Relevance for Indian AI developers
-- Startup impact
-- ML usefulness
-- India policy
-- Research importance
+- Breakthrough research or model releases
+- Practical ML/LLM tooling developers can use today
+- Startup funding, acquisitions, or market shifts that affect builders
+- Regulation and policy that changes how AI can be shipped
+- Open source releases with real traction
+- Contrarian or underreported signals (avoid hype-only stories)
+
+Deprioritize:
+- Pure speculation or opinion with no new information
+- Duplicate coverage of the same event
+- Marketing announcements without substance
 
 Return STRICT JSON only.
 
@@ -68,11 +74,7 @@ Articles:
         try:
             prompt = self._build_prompt(state)
 
-            raw_output = self.llm.generate(
-                messages=[{"role": "user", "content": prompt}],
-                task_type="ranking",
-                temperature=0.2
-            )
+            raw_output = self._call_llm(prompt)
 
             logger.debug(f"Ranker raw output: {raw_output}")
 
