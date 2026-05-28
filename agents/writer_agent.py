@@ -12,7 +12,21 @@ class WriterAgent:
 
     def _build_prompt(self, state: NewsletterState) -> str:
 
-        # ... articles_text assembly stays identical ...
+        articles_text = "\n\n".join([
+            f"""
+TITLE: {a.title}
+
+SUMMARY:
+{a.summary}
+
+WHY IT MATTERS:
+{a.why_it_matters}
+
+KEY POINTS:
+{chr(10).join([f"- {kp}" for kp in a.key_points])}
+"""
+        for a in state.processed_articles
+    ])
 
         return f"""
 You are Agent Vasra — a sharp, independent AI agent and the editorial mind behind

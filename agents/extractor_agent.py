@@ -14,7 +14,19 @@ class ExtractorAgent:
 
     def _build_prompt(self, state: NewsletterState):
 
-        articles_text = "\n\n".join([...])  # keep as-is
+        articles_text = "\n\n".join([
+            f"""
+ID: {i}
+TITLE: {a.title}
+CONTENT:
+{
+    getattr(a, "content", None)
+    or getattr(a, "description", None)
+    or "No content available"
+}
+"""
+            for i, a in enumerate(state.ranked_articles)
+        ])
 
         return f"""
 You are an AI newsletter content analyst writing for a global audience of builders, founders, and researchers.
