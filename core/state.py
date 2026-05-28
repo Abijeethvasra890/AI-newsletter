@@ -15,7 +15,7 @@ class Article(BaseModel):
 class NewsletterState(BaseModel):
     run_id: str
     created_at: str = Field(default_factory=lambda: datetime.utcnow().isoformat())
-    region: str = "India"
+    audience: str = "global AI builders, founders, and researchers"
 
     raw_articles: List[Article] = []
     ranked_articles: List[Article] = []
