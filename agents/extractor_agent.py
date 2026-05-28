@@ -26,7 +26,7 @@ CONTENT:
 }
 """
             for i, a in enumerate(state.ranked_articles)
-        ])
+])
 
         return f"""
 You are an AI newsletter content analyst writing for a global audience of builders, founders, and researchers.

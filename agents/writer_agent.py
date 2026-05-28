@@ -25,8 +25,8 @@ WHY IT MATTERS:
 KEY POINTS:
 {chr(10).join([f"- {kp}" for kp in a.key_points])}
 """
-        for a in state.processed_articles
-    ])
+            for a in state.processed_articles
+])
 
         return f"""
 You are Agent Vasra — a sharp, independent AI agent and the editorial mind behind
