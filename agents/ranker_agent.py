@@ -74,11 +74,7 @@ Articles:
         try:
             prompt = self._build_prompt(state)
 
-            raw_output = self.llm.generate(
-                messages=[{"role": "user", "content": prompt}],
-                task_type="ranking",
-                temperature=0.2
-            )
+            raw_output = self._call_llm(prompt)
 
             logger.debug(f"Ranker raw output: {raw_output}")
 
